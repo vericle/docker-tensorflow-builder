@@ -33,6 +33,11 @@ pip install keras-applications keras-preprocessing
 TF_ROOT=/tensorflow
 cd $TF_ROOT
 
+##### SETUP SPECIFIC QAT ENV ######
+. quantemu_vars.sh
+
+##### SETUP ENV ######
+
 # Python path options
 export PYTHON_BIN_PATH=$(which python)
 export PYTHON_LIB_PATH="$($PYTHON_BIN_PATH -c 'import site; print(site.getsitepackages()[0])')"
@@ -103,6 +108,38 @@ if [ "$USE_GPU" -eq "1" ]; then
   SUBFOLDER_NAME="${TF_VERSION_GIT_TAG}-py${PYTHON_VERSION}-cuda${TF_CUDA_VERSION}-cudnn${TF_CUDNN_VERSION}"
 
 else
+
+  #bazel build --config=opt \
+  #             --linkopt="-lrt" \
+  #             --linkopt="-lm" \
+  #             --host_linkopt="-lrt" \
+  #             --host_linkopt="-lm" \
+  #             --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
+  #             //tensorflow/core/user_ops:mimiquant.so
+
+  bazel build --config=opt \
+               --linkopt="-lrt" \
+               --linkopt="-lm" \
+               --host_linkopt="-lrt" \
+               --host_linkopt="-lm" \
+               --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
+               //tensorflow/core/user_ops:quantemu.so
+
+  bazel build --config=opt \
+               --linkopt="-lrt" \
+               --linkopt="-lm" \
+               --host_linkopt="-lrt" \
+               --host_linkopt="-lm" \
+               --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
+               //tensorflow/core/user_ops:quantemu_op_py
+
+  bazel build --config=opt \
+              --linkopt="-lrt" \
+              --linkopt="-lm" \
+              --host_linkopt="-lrt" \
+              --host_linkopt="-lm" \
+              --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
+              //tensorflow/python:quantemu_ops
 
   bazel build --config=opt \
               --linkopt="-lrt" \
