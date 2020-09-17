@@ -27,16 +27,8 @@ conda install --yes wheel bazel==$BAZEL_VERSION
 conda install --yes numpy==1.14
 pip install keras-applications keras-preprocessing
 
-
-# Compile TensorFlow
-
-# Here you can change the TensorFlow version you want to build.
-# You can also tweak the optimizations and various parameters for the build compilation.
-# See https://www.tensorflow.org/install/install_sources for more details.
-#TF_VERSION_GIT_TAG="v1.13.1"
-cd /
-rm -fr tensorflow/
-git clone --depth 1 --branch $TF_VERSION_GIT_TAG "https://github.com/tensorflow/tensorflow.git"
+# Compile TensorFlow from local mounted volume src/tensorflow
+# You must provide TF_VERSION_GIT_TAG manually in top build.sh
 
 TF_ROOT=/tensorflow
 cd $TF_ROOT

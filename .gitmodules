@@ -1,0 +1,3 @@
+[submodule "src/tensorflow"]
+	path = src/tensorflow
+	url = https://github.com/Dimitri1/tensorflow
