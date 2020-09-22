@@ -1,5 +1,5 @@
 LINUX_DISTRO="ubuntu-18.04"
-cd "tensorflow/$LINUX_DISTRO"
+cd "dist/$LINUX_DISTRO"
 
 # Set env variables
 export PYTHON_VERSION=3.6

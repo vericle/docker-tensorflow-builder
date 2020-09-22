@@ -116,6 +116,13 @@ else
   #             --host_linkopt="-lm" \
   #             --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
   #             //tensorflow/core/user_ops:mimiquant.so
+  #bazel build --config=opt \
+  #             --linkopt="-lrt" \
+  #             --linkopt="-lm" \
+  #             --host_linkopt="-lrt" \
+  #             --host_linkopt="-lm" \
+  #             --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
+  #             //tensorflow/examples/label_image
 
   bazel build --config=opt \
                --linkopt="-lrt" \
