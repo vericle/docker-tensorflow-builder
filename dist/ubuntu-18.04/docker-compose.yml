@@ -6,7 +6,7 @@ services:
     tty: true
     volumes:
       - ../../wheels:/wheels
-      - ../../src/tensorflow:/tensorflow
+      - ../../tensorflow:/tensorflow
       - ../../bazel_cache:/root/.cache/bazel
 
     environment:

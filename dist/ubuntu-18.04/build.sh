@@ -33,9 +33,6 @@ pip install keras-applications keras-preprocessing
 TF_ROOT=/tensorflow
 cd $TF_ROOT
 
-##### SETUP SPECIFIC QAT ENV ######
-. quantemu_vars.sh
-
 ##### SETUP ENV ######
 
 # Python path options
