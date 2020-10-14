@@ -21,7 +21,7 @@ gcc --version
 
 # Install an appropriate Python environment
 conda config --add channels conda-forge
-conda create --yes -n tensorflow python==$PYTHON_VERSION
+conda create --yes -n tensorflow python=$PYTHON_VERSION
 source activate tensorflow
 conda install --yes wheel bazel==$BAZEL_VERSION
 conda install --yes numpy==1.14
