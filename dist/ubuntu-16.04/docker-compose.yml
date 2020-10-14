@@ -6,6 +6,9 @@ services:
     tty: true
     volumes:
       - ../../wheels:/wheels
+      - ../../tensorflow:/tensorflow
+      - ../../bazel_cache:/root/.cache/bazel
+
     environment:
       - TF_VERSION_GIT_TAG=${TF_VERSION_GIT_TAG:?TF_VERSION_GIT_TAG}
       - PYTHON_VERSION=${PYTHON_VERSION:?PYTHON_VERSION}

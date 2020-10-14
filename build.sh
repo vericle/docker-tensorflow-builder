@@ -1,4 +1,4 @@
-LINUX_DISTRO="ubuntu-18.04"
+LINUX_DISTRO="ubuntu-16.04"
 cd "dist/$LINUX_DISTRO"
 
 # Set env variables
@@ -12,7 +12,3 @@ docker-compose build
 
 # Start the compilation
 docker-compose run tf
-
-# You can also do:
-# docker-compose run tf bash
-# bash build.sh

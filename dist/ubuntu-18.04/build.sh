@@ -106,21 +106,6 @@ if [ "$USE_GPU" -eq "1" ]; then
 
 else
 
-  #bazel build --config=opt \
-  #             --linkopt="-lrt" \
-  #             --linkopt="-lm" \
-  #             --host_linkopt="-lrt" \
-  #             --host_linkopt="-lm" \
-  #             --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
-  #             //tensorflow/core/user_ops:mimiquant.so
-  #bazel build --config=opt \
-  #             --linkopt="-lrt" \
-  #             --linkopt="-lm" \
-  #             --host_linkopt="-lrt" \
-  #             --host_linkopt="-lm" \
-  #             --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" \
-  #             //tensorflow/examples/label_image
-
   bazel build --config=opt \
                --linkopt="-lrt" \
                --linkopt="-lm" \
@@ -159,6 +144,7 @@ fi
 
 mkdir -p "/wheels/$SUBFOLDER_NAME"
 
+# Project name can only be set for TF > 1.8
 bazel-bin/tensorflow/tools/pip_package/build_pip_package "/wheels/$SUBFOLDER_NAME" --project_name "$PACKAGE_NAME"
 
 # Use the following for TF <= 1.8
